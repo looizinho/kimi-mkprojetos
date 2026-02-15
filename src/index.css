@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 30% 8%;
+    --foreground: 0 0% 100%;
+    --card: 210 30% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 210 30% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 193 70% 61%;
+    --primary-foreground: 210 30% 8%;
+    --secondary: 213 50% 12%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 20% 20%;
+    --muted-foreground: 210 10% 70%;
+    --accent: 193 70% 61%;
+    --accent-foreground: 210 30% 8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 20% 25%;
+    --input: 210 20% 20%;
+    --ring: 193 70% 61%;
+    --radius: 0.625rem;
+    
+    /* Custom Colors */
+    --mk-primary: #55BBE0;
+    --mk-secondary: #101D2F;
+    --mk-dark: #0A1420;
+    --mk-gray: #E9E9E9;
+    
+    /* Animation Easings */
+    --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-expo-in: cubic-bezier(0.7, 0, 0.84, 0);
+    --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-dramatic: cubic-bezier(0.87, 0, 0.13, 1);
+    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --ease-magnetic: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#101D2F] text-white antialiased;
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #55BBE0 0%, #3A9BC0 100%);
+  }
+  
+  .glow-primary {
+    box-shadow: 0 0 30px rgba(85, 187, 224, 0.4);
+  }
+  
+  .glow-primary-strong {
+    box-shadow: 0 0 50px rgba(85, 187, 224, 0.6);
+  }
+  
+  .glass {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-xl bg-black/20 border border-white/5;
+  }
+  
+  .btn-primary {
+    @apply px-8 py-4 bg-[#55BBE0] text-[#101D2F] font-semibold rounded-lg transition-all duration-300;
+  }
+  
+  .btn-primary:hover {
+    @apply scale-105;
+    box-shadow: 0 0 30px rgba(85, 187, 224, 0.5);
+  }
+  
+  .btn-secondary {
+    @apply px-8 py-4 border-2 border-[#55BBE0] text-[#55BBE0] font-semibold rounded-lg transition-all duration-300;
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-[#55BBE0] text-[#101D2F];
+    box-shadow: 0 0 30px rgba(85, 187, 224, 0.4);
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  
+  .card-hover:hover {
+    @apply -translate-y-3;
+    box-shadow: 0 25px 50px rgba(85, 187, 224, 0.2);
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-800 { animation-delay: 800ms; }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101D2F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #55BBE0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3A9BC0;
+}
+
+/* Selection */
+::selection {
+  background: rgba(85, 187, 224, 0.3);
+  color: white;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
