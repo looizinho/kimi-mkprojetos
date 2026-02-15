@@ -151,7 +151,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <span className="text-[#55BBE0] text-sm">T:</span>
                 <a href="tel:+5511999999999" className="text-white/60 text-sm hover:text-[#55BBE0] transition-colors">
-                  (11) 9999-9999
+                  (21) 98871-5996
                 </a>
               </li>
               <li className="flex items-start gap-3">

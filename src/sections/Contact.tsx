@@ -26,7 +26,7 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Telefone',
-    value: '(11) 9999-9999',
+    value: '(21) 98871-5996',
     href: 'tel:+5511999999999',
   },
   {
@@ -44,7 +44,7 @@ const contactInfo = [
   {
     icon: MessageCircle,
     label: 'WhatsApp',
-    value: '(11) 99999-9999',
+    value: '(21) 98871-5996',
     href: 'https://wa.me/5511999999999',
   },
 ];
@@ -254,7 +254,7 @@ export default function Contact() {
                   <label className="block text-sm text-white/60 mb-2">Telefone</label>
                   <Input
                     type="tel"
-                    placeholder="(11) 99999-9999"
+                    placeholder="(21) 98871-5996"
                     className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-[#55BBE0] focus:ring-[#55BBE0]/20"
                   />
                 </div>
