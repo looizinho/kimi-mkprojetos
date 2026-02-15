@@ -119,6 +119,20 @@
   }
 }
 
+
+  @keyframes float-twice {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float-twice {
+    animation: float-twice 4s ease-in-out 2;
+  }
+
 @layer utilities {
   .animation-delay-100 { animation-delay: 100ms; }
   .animation-delay-200 { animation-delay: 200ms; }

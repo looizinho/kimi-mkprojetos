@@ -185,7 +185,7 @@ export default function Contact() {
                   href={item.href}
                   className="contact-item group flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-[#55BBE0]/30 hover:bg-white/[0.04] transition-all duration-300"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#55BBE0]/10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#55BBE0]/20 group-hover:scale-110 animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#55BBE0]/10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#55BBE0]/20 group-hover:scale-110 animate-float-twice" style={{ animationDelay: `${index * 0.2}s` }}>
                     <item.icon className="w-5 h-5 text-[#55BBE0]" />
                   </div>
                   <div>
