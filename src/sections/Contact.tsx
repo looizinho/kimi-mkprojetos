@@ -32,13 +32,13 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'E-mail',
-    value: 'contato@mkprojetos.com.br',
+    value: 'Envie uma Mensagem',
     href: 'mailto:contato@mkprojetos.com.br',
   },
   {
     icon: MapPin,
     label: 'Endereço',
-    value: 'São Paulo, SP - Brasil',
+    value: 'Rio de Janeiro - Brasil',
     href: '#',
   },
   {
@@ -63,6 +63,8 @@ export default function Contact() {
   const titleRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const [selectedSubject, setSelectedSubject] = useState('');
+  const [submitAttempted, setSubmitAttempted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const triggersRef = useRef<ScrollTrigger[]>([]);
@@ -128,15 +130,39 @@ export default function Contact() {
     };
   }, []);
   
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitAttempted(true);
+
+    if (!selectedSubject) {
+      return;
+    }
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    const name = String(formData.get('name') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const phone = String(formData.get('phone') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    const mailSubject = `[Site] ${selectedSubject}`;
+    const mailBody = [
+      `Nome: ${name}`,
+      `E-mail: ${email}`,
+      `Telefone: ${phone || 'Não informado'}`,
+      `Assunto: ${selectedSubject}`,
+      '',
+      'Mensagem:',
+      message,
+    ].join('\n');
+
+    const mailtoLink = `mailto:contato@mkprojetos.com.br?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+    window.location.href = mailtoLink;
+
     setIsSubmitting(false);
     setIsSubmitted(true);
+    setSubmitAttempted(false);
     
     // Reset after 3 seconds
     setTimeout(() => {
@@ -203,7 +229,7 @@ export default function Contact() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="w-10 h-10 text-[#55BBE0] mx-auto mb-2" />
-                  <p className="text-white/60 text-sm">São Paulo, SP - Brasil</p>
+                  <p className="text-white/60 text-sm">Rio de Janeiro - Brasil</p>
                 </div>
               </div>
               {/* Decorative Grid */}
@@ -233,6 +259,7 @@ export default function Contact() {
                   <label className="block text-sm text-white/60 mb-2">Nome</label>
                   <Input
                     type="text"
+                    name="name"
                     placeholder="Seu nome"
                     required
                     className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-[#55BBE0] focus:ring-[#55BBE0]/20"
@@ -242,6 +269,7 @@ export default function Contact() {
                   <label className="block text-sm text-white/60 mb-2">E-mail</label>
                   <Input
                     type="email"
+                    name="email"
                     placeholder="seu@email.com"
                     required
                     className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-[#55BBE0] focus:ring-[#55BBE0]/20"
@@ -254,13 +282,14 @@ export default function Contact() {
                   <label className="block text-sm text-white/60 mb-2">Telefone</label>
                   <Input
                     type="tel"
+                    name="phone"
                     placeholder="(21) 98871-5996"
                     className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-[#55BBE0] focus:ring-[#55BBE0]/20"
                   />
                 </div>
                 <div>
                   <label className="block text-sm text-white/60 mb-2">Assunto</label>
-                  <Select>
+                  <Select value={selectedSubject} onValueChange={setSelectedSubject}>
                     <SelectTrigger className="bg-white/5 border-white/10 text-white focus:ring-[#55BBE0]/20">
                       <SelectValue placeholder="Selecione o assunto" />
                     </SelectTrigger>
@@ -276,12 +305,16 @@ export default function Contact() {
                       ))}
                     </SelectContent>
                   </Select>
+                  {!selectedSubject && submitAttempted && (
+                    <p className="mt-2 text-xs text-white/40">Selecione um assunto para enviar.</p>
+                  )}
                 </div>
               </div>
               
               <div className="form-field">
                 <label className="block text-sm text-white/60 mb-2">Mensagem</label>
                 <Textarea
+                  name="message"
                   placeholder="Descreva sua necessidade..."
                   required
                   rows={5}
