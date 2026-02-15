@@ -163,7 +163,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <span className="text-[#55BBE0] text-sm">L:</span>
                 <span className="text-white/60 text-sm">
-                  São Paulo, SP - Brasil
+                  Rio de Janeiro - Brasil
                 </span>
               </li>
             </ul>

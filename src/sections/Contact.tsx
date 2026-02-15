@@ -63,7 +63,7 @@ export default function Contact() {
   const titleRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  const [selectedSubject, setSelectedSubject] = useState('');
+  const [selectedSubject, setSelectedSubject] = useState('Outros');
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -284,6 +284,7 @@ export default function Contact() {
                     type="tel"
                     name="phone"
                     placeholder="(21) 98871-5996"
+                    required
                     className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-[#55BBE0] focus:ring-[#55BBE0]/20"
                   />
                 </div>
