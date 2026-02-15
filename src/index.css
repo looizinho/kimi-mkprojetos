@@ -130,7 +130,7 @@
   }
 
   .animate-float-twice {
-    animation: float-twice 4s ease-in-out 2;
+    animation: float-twice 1.8s ease-in-out 2;
   }
 
 @layer utilities {
