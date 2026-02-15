@@ -8,7 +8,8 @@
     "dev:open": "vite --host --open",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "repo:open": "/opt/homebrew/bin/git-open"
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.29.0",
@@ -64,6 +65,7 @@
     "zod": "^4.3.5"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.29.0",
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",

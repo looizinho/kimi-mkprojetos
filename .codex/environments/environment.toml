@@ -14,3 +14,8 @@ command = "pnpm dev"
 name = "Run & Open"
 icon = "run"
 command = "pnpm dev:open"
+
+[[actions]]
+name = "Open Repo"
+icon = "tool"
+command = "pnpm repo:open"
